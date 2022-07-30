@@ -1,3 +1,6 @@
+# Claim
+This repo is forked from Chagall/notification-listener-service-example. I did some modification so it could show all notifications.
+
 # Notification Listener Service Example 
 
 This example aims to teach you how to intercept notifications received by the Android System.
