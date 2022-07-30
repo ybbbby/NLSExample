@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String ACTION_NOTIFICATION_LISTENER_SETTINGS = "android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS";
 
     private ImageView interceptedNotificationImageView;
-    private ImageChangeBroadcastReceiver imageChangeBroadcastReceiver;
+    private CustomBroadcastReceiver customBroadcastReceiver;
     private AlertDialog enableNotificationListenerAlertDialog;
     private TextView txtView;
 
@@ -61,16 +61,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Finally we register a receiver to tell the MainActivity when a notification has been received
-        imageChangeBroadcastReceiver = new ImageChangeBroadcastReceiver();
+        customBroadcastReceiver = new CustomBroadcastReceiver();
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("com.github.chagall.notificationlistenerexample");
-        registerReceiver(imageChangeBroadcastReceiver,intentFilter);
+        intentFilter.addAction("com.github.ybbbby.notificationlistenerexample");
+        registerReceiver(customBroadcastReceiver,intentFilter);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(imageChangeBroadcastReceiver);
+        unregisterReceiver(customBroadcastReceiver);
     }
 
     /**
@@ -120,12 +120,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Image Change Broadcast Receiver.
+     * Custom Broadcast Receiver.
      * We use this Broadcast Receiver to notify the Main Activity when
      * a new notification has arrived, so it can properly change the
      * notification image
      * */
-    public class ImageChangeBroadcastReceiver extends BroadcastReceiver {
+    public class CustomBroadcastReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             int receivedNotificationCode = intent.getIntExtra("Notification Code",-1);

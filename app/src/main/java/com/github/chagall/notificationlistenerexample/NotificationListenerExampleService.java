@@ -57,9 +57,9 @@ public class NotificationListenerExampleService extends NotificationListenerServ
     public void onNotificationPosted(StatusBarNotification sbn){
         int notificationCode = matchNotificationCode(sbn);
 
-            Intent intent = new  Intent("com.github.chagall.notificationlistenerexample");
+            Intent intent = new  Intent("com.github.ybbbby.notificationlistenerexample");
             intent.putExtra("Notification Code", notificationCode);
-            intent.putExtra("asd",sbn.getPackageName());
+            intent.putExtra("PackageName",sbn.getPackageName());
             sendBroadcast(intent);
     }
 
@@ -73,7 +73,7 @@ public class NotificationListenerExampleService extends NotificationListenerServ
         if(activeNotifications != null && activeNotifications.length > 0) {
             for (int i = 0; i < activeNotifications.length; i++) {
                 if (notificationCode == matchNotificationCode(activeNotifications[i])) {
-                    Intent intent = new  Intent("com.github.chagall.notificationlistenerexample");
+                    Intent intent = new  Intent("com.github.ybbbby.notificationlistenerexample");
                     intent.putExtra("Notification Code", notificationCode);
                     intent.putExtra("Package Name",sbn.getPackageName());
                     sendBroadcast(intent);
